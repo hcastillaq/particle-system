@@ -1,8 +1,8 @@
-import ChenAttractor from "./attractors/chen.attractor";
 import {
 	ParticleSystemAnimation,
 	ParticleSystemAnimationConfig,
-} from "./lib/three/config.three";
+} from "particle-system";
+import ChenAttractor from "./attractors/chen.attractor";
 
 const system = new ChenAttractor();
 

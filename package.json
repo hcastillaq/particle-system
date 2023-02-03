@@ -14,9 +14,11 @@
 	],
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc && vite build",
-		"prepare": "tsc && vite build",
-		"preview": "vite preview"
+		"build": "tsc && vite build && node minify.js",
+		"prepare": "tsc && vite build && node minify.js",
+		"preview": "vite preview",
+		"prepublish": "tsc && node minify.js",
+		"minify": "node minify.js"
 	},
 	"devDependencies": {
 		"typescript": "^4.9.3",
@@ -24,6 +26,8 @@
 	},
 	"dependencies": {
 		"@types/three": "^0.149.0",
+		"gulp": "^4.0.2",
+		"gulp-minify": "^3.1.0",
 		"three": "^0.149.0"
 	},
 	"author": {
