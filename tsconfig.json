@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"target": "ES2017",
+		"module": "ES6",
+		"sourceMap": true,
+		"declaration": true,
+		"outDir": "package",
+		"moduleResolution": "node"
+	},
+	"include": [
+		"src/lib/**/*"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}
