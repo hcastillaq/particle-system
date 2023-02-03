@@ -2,7 +2,7 @@ import { BufferGeometry, Float32BufferAttribute, Scene } from "three";
 
 export type Particles = { [key: string]: number };
 
-abstract class ParticleSystem {
+export abstract class ParticleSystem {
 	protected particles: Array<Particles> = [];
 	protected numberParticles: number = 0;
 	protected speed: number = 1;
@@ -100,5 +100,3 @@ abstract class ParticleSystem {
 		}
 	}
 }
-
-export default ParticleSystem;

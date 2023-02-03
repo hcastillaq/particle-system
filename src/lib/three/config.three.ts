@@ -1,6 +1,6 @@
 import { BufferGeometry, Points, PointsMaterial } from "three";
 import Stats from "three/examples/jsm/libs/stats.module";
-import ParticleSystem from "../system/system";
+import { ParticleSystem } from "../system/system";
 import { CAMERA, RENDERER, SCENE } from "./globals.three";
 import { particleSystemStringToNumber } from "./helpers.three";
 import { getOrbitControl, OrbitControlConfig } from "./orbitControl.three";

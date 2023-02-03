@@ -2,20 +2,20 @@
 	"name": "particle-system",
 	"private": false,
 	"version": "0.0.0",
-	"type": "module",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/hcastillaq/particle-system-threejs"
 	},
-	"browser": "package/index.js",
-	"node": "package/index.js",
 	"main": "package/index.js",
+	"types": "package/index.d.ts",
+	"type": "module",
 	"files": [
 		"package/**/*"
 	],
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
+		"prepare": "tsc && vite build",
 		"preview": "vite preview"
 	},
 	"devDependencies": {
@@ -25,5 +25,18 @@
 	"dependencies": {
 		"@types/three": "^0.149.0",
 		"three": "^0.149.0"
-	}
+	},
+	"author": {
+		"name": "Hernán Castilla",
+		"email": "hcastillaq@gmail.com",
+		"url": "https://hcastillaq.com"
+	},
+	"description": "Particle system with three.js",
+	"keywords": [
+		"three.js",
+		"particle system",
+		"particles",
+		"webgl"
+	],
+	"license": "MIT"
 }
