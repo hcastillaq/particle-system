@@ -2,14 +2,14 @@ import { ParticleSystem } from "../system/system";
 import { OrbitControlConfig } from "./orbitControl.three";
 export type ParticleSystemAnimationConfig = {
     system: ParticleSystem;
-    parentNode: HTMLElement;
+    container: HTMLElement;
     stats?: boolean;
     material: {
         color: string;
         opacity?: number;
         sizeParticle: number;
     };
-    zoom: number;
+    zoom?: number;
     orbitConfig?: OrbitControlConfig;
 };
 export type ParticleSystemAnimationCallbacks = {
