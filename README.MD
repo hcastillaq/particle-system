@@ -1,3 +1,5 @@
+example project using this library [https://www.gartsimulation.com/](https://www.gartsimulation.com/)
+
 
 ```
 npm install particle-system
