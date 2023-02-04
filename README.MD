@@ -1,5 +1,8 @@
 example project using this library [https://www.gartsimulation.com/](https://www.gartsimulation.com/)
 
+<img  src="https://raw.githubusercontent.com/hcastillaq/particle-system/master/public/particles.png" alt="Dadras Attractor"  width="800" >
+
+
 
 ```
 npm install particle-system
