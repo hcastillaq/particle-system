@@ -11,9 +11,9 @@ const config: ParticleSystemAnimationConfig = {
 	container: document.getElementById("app") as HTMLElement,
 	stats: true,
 	material: {
-		color: "#fff",
-		opacity: 1,
-		sizeParticle: 1,
+		color: "#ff9d00",
+		opacity: 0.5,
+		sizeParticle: 0.5,
 	},
 	orbitConfig: {
 		enableZoom: true,

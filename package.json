@@ -1,7 +1,7 @@
 {
 	"name": "particle-system",
 	"private": false,
-	"version": "0.0.06",
+	"version": "0.0.07",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/hcastillaq/particle-system-threejs"
