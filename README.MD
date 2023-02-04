@@ -22,7 +22,7 @@ const system = new ChenAttractor();
 const container =  document.getElementById("app")
 const config: ParticleSystemAnimationConfig = {
 	system: system,
-	parentNode: container,
+	container: container,
 	stats: true,
 	material: {
 		color: "#fff",
@@ -32,8 +32,7 @@ const config: ParticleSystemAnimationConfig = {
 	orbitConfig: {
 		enableZoom: true,
 		autoRotate: true,
-	},
-	zoom: 500,
+	}
 };
 const animation = ParticleSystemAnimation(config);
 
@@ -110,7 +109,7 @@ class ExampleSystem extends ParticleSystem {
 		// iterate all particles
 		for (let index = 0; index < this.numberParticles; index++) {
 
-			const particle = this.particles[i];
+			const particle = this.particles[index];
 			// ... calculate
 			
 			// update particle... 
@@ -131,14 +130,14 @@ Params
 ```
 type ParticleSystemAnimationConfig = {
 	system: ParticleSystem;
-	parentNode: HTMLElement;
+	container: HTMLElement;
 	stats?: boolean;
 	material: {
 		color: string;
 		opacity?: number;
 		sizeParticle: number;
 	};
-	zoom: number;
+	zoom?: number;
 	orbitConfig?: OrbitControlConfig;
 };
 

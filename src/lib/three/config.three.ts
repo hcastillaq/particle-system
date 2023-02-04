@@ -7,14 +7,14 @@ import { getOrbitControl, OrbitControlConfig } from "./orbitControl.three";
 
 export type ParticleSystemAnimationConfig = {
 	system: ParticleSystem;
-	parentNode: HTMLElement;
+	container: HTMLElement;
 	stats?: boolean;
 	material: {
 		color: string;
 		opacity?: number;
 		sizeParticle: number;
 	};
-	zoom: number;
+	zoom?: number;
 	orbitConfig?: OrbitControlConfig;
 };
 
@@ -30,12 +30,12 @@ export const ParticleSystemAnimation = function (
 	config: ParticleSystemAnimationConfig,
 ): ParticleSystemAnimationCallbacks {
 	// render element in the DOM
-	config.parentNode.appendChild(RENDERER.domElement);
+	config.container.appendChild(RENDERER.domElement);
 	let stats: Stats | undefined = undefined;
 	//stats
 	if (config.stats) {
 		stats = Stats();
-		config.parentNode.appendChild(stats.domElement);
+		config.container.appendChild(stats.domElement);
 	}
 
 	//OrbitControl configuration
@@ -44,7 +44,7 @@ export const ParticleSystemAnimation = function (
 		RENDERER.domElement,
 		config.orbitConfig,
 	);
-	CAMERA.position.z = config.zoom;
+	CAMERA.position.z = config.zoom ? config.zoom : 500;
 
 	// geometry
 	const geometry = new BufferGeometry();
