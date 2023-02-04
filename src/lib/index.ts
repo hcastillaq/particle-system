@@ -4,3 +4,4 @@ export {
 	ParticleSystemAnimationCallbacks,
 	ParticleSystemAnimationConfig,
 } from "./three/config.three";
+export { OrbitControlConfig } from "./three/orbitControl.three";

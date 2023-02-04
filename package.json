@@ -31,7 +31,7 @@
 		"three": "^0.149.0"
 	},
 	"author": {
-		"name": "Hernán Castilla",
+		"name": "Hernan Castilla",
 		"email": "hcastillaq@gmail.com",
 		"url": "https://hcastillaq.com"
 	},
@@ -40,7 +40,11 @@
 		"three.js",
 		"particle system",
 		"particles",
-		"webgl"
+		"webgl",
+		"generative art",
+		"art",
+		"javascript",
+		"three"
 	],
 	"license": "MIT"
 }

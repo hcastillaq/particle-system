@@ -1,17 +1,12 @@
-# Install
 
 ```
-
 npm install particle-system
 yarn install particle-system
 
 ```
 
 
-### Main function
-
 ```
-
 import {
 	ParticleSystemAnimation,
 	ParticleSystemAnimationConfig,
