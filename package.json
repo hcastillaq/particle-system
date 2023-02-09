@@ -1,7 +1,7 @@
 {
 	"name": "particle-system",
 	"private": false,
-	"version": "0.0.08",
+	"version": "0.0.09",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/hcastillaq/particle-system-threejs"
@@ -14,10 +14,11 @@
 	],
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc && vite build",
-		"prepare": "tsc && vite build",
+		"build": "tsc && vite build && node minify.js",
+		"prepare": "tsc && vite build && node minify.js",
 		"preview": "vite preview",
-		"prepublish": "tsc",
+		"prepublish": "tsc  && node minify.js",
+		"tsc": "tsc",
 		"minify": "node minify.js"
 	},
 	"devDependencies": {

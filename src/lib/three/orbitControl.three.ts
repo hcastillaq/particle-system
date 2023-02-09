@@ -23,11 +23,14 @@ export const getOrbitControl = (
 ): OrbitControls => {
 	config = { ...defaultConfig, ...config };
 	const controls: OrbitControls = new OrbitControls(camera, element);
-	controls.enableDamping = config.enableDamping;
-	controls.dampingFactor = config.dampingFactor;
-	controls.enableZoom = config.enableZoom;
-	controls.autoRotate = config.autoRotate;
-	controls.autoRotateSpeed = config.autoRotateSpeed || 0.3;
+
+	controls.enableDamping = config.enableDamping ? true : false;
+	controls.dampingFactor = config.dampingFactor ? config.dampingFactor : 0.25;
+	controls.enableZoom = config.enableZoom ? true : false;
+	controls.autoRotate = config.autoRotate ? true : false;
+	controls.autoRotateSpeed = config.autoRotateSpeed
+		? config.autoRotateSpeed
+		: 0.3;
 
 	return controls;
 };

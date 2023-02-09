@@ -1,4 +1,4 @@
-import { ParticleSystem } from "../system/system";
+import { ParticleSystem } from "./../system/particleSystem";
 import { OrbitControlConfig } from "./orbitControl.three";
 export type ParticleSystemAnimationConfig = {
     system: ParticleSystem;

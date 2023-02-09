@@ -1,10 +1,9 @@
 import { BufferGeometry, Points, PointsMaterial } from "three";
 import Stats from "three/examples/jsm/libs/stats.module";
-import { ParticleSystem } from "../system/system";
+import { ParticleSystem } from "./../system/particleSystem";
 import { CAMERA, RENDERER, SCENE } from "./globals.three";
 import { particleSystemStringToNumber } from "./helpers.three";
 import { getOrbitControl, OrbitControlConfig } from "./orbitControl.three";
-
 export type ParticleSystemAnimationConfig = {
 	system: ParticleSystem;
 	container: HTMLElement;
@@ -134,7 +133,7 @@ export const ParticleSystemAnimation = function (
 		controls.update();
 		geometry.attributes.position.needsUpdate = true;
 		RENDERER.render(SCENE, CAMERA);
-		if (config.stats) {
+		if (config.stats && stats) {
 			stats.update();
 		}
 	};
