@@ -1,6 +1,6 @@
-import { ParticleSystem } from "particle-system";
+import { ParticleSystem } from "particle-system/package/system";
 
-class ChenAttractor extends ParticleSystem {
+export class ChenAttractor extends ParticleSystem {
 	numberParticles = 1000000;
 	speed = 0.5;
 	make() {

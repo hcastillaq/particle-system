@@ -1,1 +1,20 @@
-import{OrbitControls}from"three/examples/jsm/controls/OrbitControls";const defaultConfig={enableDamping:!0,dampingFactor:.25,enableZoom:!0,autoRotate:!0,autoRotateSpeed:.5};export const getOrbitControl=(t,o,e)=>{e=Object.assign(Object.assign({},defaultConfig),e);const a=new OrbitControls(t,o);return a.enableDamping=!!e.enableDamping,a.dampingFactor=e.dampingFactor?e.dampingFactor:.25,a.enableZoom=!!e.enableZoom,a.autoRotate=!!e.autoRotate,a.autoRotateSpeed=e.autoRotateSpeed?e.autoRotateSpeed:.3,a};
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+const defaultConfig = {
+    enableDamping: true,
+    dampingFactor: 0.25,
+    enableZoom: true,
+    autoRotate: true,
+    autoRotateSpeed: 0.5,
+};
+export const getOrbitControl = (camera, element, config) => {
+    config = { ...defaultConfig, ...config };
+    const controls = new OrbitControls(camera, element);
+    controls.enableDamping = config.enableDamping ? true : false;
+    controls.dampingFactor = config.dampingFactor ? config.dampingFactor : 0.25;
+    controls.enableZoom = config.enableZoom ? true : false;
+    controls.autoRotate = config.autoRotate ? true : false;
+    controls.autoRotateSpeed = config.autoRotateSpeed
+        ? config.autoRotateSpeed
+        : 0.3;
+    return controls;
+};

@@ -1,5 +1,5 @@
-import { ParticleSystem } from "./../system/particleSystem";
-import { OrbitControlConfig } from "./orbitControl.three";
+import { ParticleSystem } from "./../system/index.js";
+import { OrbitControlConfig } from "./orbitControl.three.js";
 export type ParticleSystemAnimationConfig = {
     system: ParticleSystem;
     container: HTMLElement;

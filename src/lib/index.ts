@@ -1,11 +1,11 @@
-export { Particles, ParticleSystem } from "./system/particleSystem";
+export { Particles, ParticleSystem } from "./system/index.js";
 export {
 	ParticleSystemAnimation,
 	ParticleSystemAnimationCallbacks,
 	ParticleSystemAnimationConfig,
-} from "./three/config.three";
+} from "./three/config.three.js";
 export {
 	particleSystemNumberToString,
 	particleSystemStringToNumber,
-} from "./three/helpers.three";
-export { OrbitControlConfig } from "./three/orbitControl.three";
+} from "./three/helpers.three.js";
+export { OrbitControlConfig } from "./three/orbitControl.three.js";

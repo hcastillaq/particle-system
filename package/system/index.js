@@ -1,12 +1,10 @@
 import { BufferGeometry, Float32BufferAttribute, Scene } from "three";
 export class ParticleSystem {
-    constructor() {
-        this.particles = [];
-        this.numberParticles = 0;
-        this.speed = 1;
-        this.geometry = new BufferGeometry();
-        this.scene = new Scene();
-    }
+    particles = [];
+    numberParticles = 0;
+    speed = 1;
+    geometry = new BufferGeometry();
+    scene = new Scene();
     setParticlesNumber(number) {
         this.numberParticles = number;
     }

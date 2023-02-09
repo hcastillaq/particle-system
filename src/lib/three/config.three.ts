@@ -1,9 +1,10 @@
 import { BufferGeometry, Points, PointsMaterial } from "three";
-import Stats from "three/examples/jsm/libs/stats.module";
-import { ParticleSystem } from "./../system/particleSystem";
-import { CAMERA, RENDERER, SCENE } from "./globals.three";
-import { particleSystemStringToNumber } from "./helpers.three";
-import { getOrbitControl, OrbitControlConfig } from "./orbitControl.three";
+import Stats from "three/examples/jsm/libs/stats.module.js";
+import { ParticleSystem } from "./../system/index.js";
+import { CAMERA, RENDERER, SCENE } from "./globals.three.js";
+import { particleSystemStringToNumber } from "./helpers.three.js";
+import { getOrbitControl, OrbitControlConfig } from "./orbitControl.three.js";
+
 export type ParticleSystemAnimationConfig = {
 	system: ParticleSystem;
 	container: HTMLElement;
