@@ -1,4 +1,4 @@
-import { ParticleSystem } from "../lib/system/system";
+import { ParticleSystem } from "particle-system";
 
 class ChenAttractor extends ParticleSystem {
 	numberParticles = 1000000;
