@@ -1,8 +1,11 @@
-import { ParticleSystem } from "particle-system/package/system";
+import { ParticleSystem } from "../lib/system";
+
+const worker = new Worker("./worker.js");
 
 export class ChenAttractor extends ParticleSystem {
-	numberParticles = 1000000;
-	speed = 0.5;
+	numberParticles = 4000000;
+	speed = 1;
+
 	make() {
 		return {
 			x: 5,
@@ -30,18 +33,5 @@ export class ChenAttractor extends ParticleSystem {
 		}
 	}
 }
-
-// export const ChenAttractorConfig: SystemAndConfig = {
-// 	system: new ChenAttractor(),
-// 	name: "Chen  Attractor",
-// 	config: {
-// 		particles: 1000000,
-// 		zoom: 250,
-// 		speed: 1,
-// 		sizeParticle: 0.2,
-// 		autoRotate: true,
-// 		description: "",
-// 	},
-// };
 
 export default ChenAttractor;

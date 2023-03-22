@@ -41,7 +41,7 @@ export abstract class ParticleSystem {
 		this.updateGeometricParticles(vertices);
 	}
 
-	private updateGeometricParticles(vertices: Array<number>) {
+	protected updateGeometricParticles(vertices: Array<number>) {
 		this.geometry.setAttribute(
 			"position",
 			new Float32BufferAttribute(vertices, 3),

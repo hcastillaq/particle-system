@@ -1,7 +1,8 @@
 import {
 	ParticleSystemAnimation,
 	ParticleSystemAnimationConfig,
-} from "particle-system";
+} from "./lib/three/config.three";
+
 import ChenAttractor from "./attractors/chen.attractor";
 
 const chen = new ChenAttractor();
@@ -10,12 +11,14 @@ const config: ParticleSystemAnimationConfig = {
 	system: chen,
 	container: document.getElementById("app") as HTMLElement,
 	material: {
-		color: "#fff",
-		sizeParticle: 0.2,
+		color: "red",
+		sizeParticle: 0.01,
+		opacity: 1,
 	},
 	orbitConfig: {
 		autoRotate: true,
 	},
+	stats: true,
 };
 
 const animation = ParticleSystemAnimation(config);

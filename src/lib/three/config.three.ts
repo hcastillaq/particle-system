@@ -2,7 +2,6 @@ import { BufferGeometry, Points, PointsMaterial } from "three";
 import Stats from "three/examples/jsm/libs/stats.module.js";
 import { ParticleSystem } from "./../system/index.js";
 import { CAMERA, RENDERER, SCENE } from "./globals.three.js";
-import { particleSystemStringToNumber } from "./helpers.three.js";
 import { getOrbitControl, OrbitControlConfig } from "./orbitControl.three.js";
 
 export type ParticleSystemAnimationConfig = {
@@ -12,7 +11,7 @@ export type ParticleSystemAnimationConfig = {
 	material: {
 		color: string;
 		opacity?: number;
-		sizeParticle: number;
+		sizeParticle?: number;
 	};
 	zoom?: number;
 	orbitConfig?: OrbitControlConfig;
@@ -50,9 +49,10 @@ export const ParticleSystemAnimation = function (
 	const geometry = new BufferGeometry();
 	const material = new PointsMaterial({
 		transparent: true,
-		opacity: config.material.opacity || 0.7,
-		size: config.material.sizeParticle,
-		color: particleSystemStringToNumber(config.material.color),
+		opacity: config.material.opacity || 0.5,
+		color: config.material.color,
+		size: config.material.sizeParticle || 0.01,
+		sizeAttenuation: true,
 	});
 
 	config.system.setGeometry(geometry);

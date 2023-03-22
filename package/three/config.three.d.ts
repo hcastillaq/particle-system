@@ -7,7 +7,7 @@ export type ParticleSystemAnimationConfig = {
     material: {
         color: string;
         opacity?: number;
-        sizeParticle: number;
+        sizeParticle?: number;
     };
     zoom?: number;
     orbitConfig?: OrbitControlConfig;

@@ -16,7 +16,7 @@ export declare abstract class ParticleSystem {
     setSpeed(speed: number): void;
     changeSpeed(speed: number): void;
     private makeVertices;
-    private updateGeometricParticles;
+    protected updateGeometricParticles(vertices: Array<number>): void;
     protected random(min: number, max: number): number;
     dispose(): void;
     setScene(scene: Scene): void;
