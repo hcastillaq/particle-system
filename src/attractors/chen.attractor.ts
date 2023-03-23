@@ -1,10 +1,8 @@
 import { ParticleSystem } from "../lib/system";
 
-const worker = new Worker("./worker.js");
-
 export class ChenAttractor extends ParticleSystem {
 	numberParticles = 4000000;
-	speed = 1;
+	speed = 2;
 
 	make() {
 		return {

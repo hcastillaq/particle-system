@@ -9,5 +9,5 @@ export const RENDERER = new WebGLRenderer({
 	powerPreference: "high-performance",
 });
 RENDERER.outputEncoding = sRGBEncoding;
-RENDERER.setPixelRatio(window.devicePixelRatio);
+RENDERER.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1);
 RENDERER.setSize(WIDTH, HEIGHT);

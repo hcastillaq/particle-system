@@ -3,17 +3,18 @@ import {
 	ParticleSystemAnimationConfig,
 } from "./lib/three/config.three";
 
-import ChenAttractor from "./attractors/chen.attractor";
+import { LorenzAttractor } from "./attractors/lorenz.attractor";
 
-const chen = new ChenAttractor();
+const chen = new LorenzAttractor();
 
 const config: ParticleSystemAnimationConfig = {
 	system: chen,
 	container: document.getElementById("app") as HTMLElement,
+	zoom: 100,
 	material: {
 		color: "red",
 		sizeParticle: 0.01,
-		opacity: 1,
+		opacity: 0.1,
 	},
 	orbitConfig: {
 		autoRotate: true,

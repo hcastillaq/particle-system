@@ -1,4 +1,9 @@
-import { BufferGeometry, Points, PointsMaterial } from "three";
+import {
+	AdditiveBlending,
+	BufferGeometry,
+	Points,
+	PointsMaterial,
+} from "three";
 import Stats from "three/examples/jsm/libs/stats.module.js";
 import { ParticleSystem } from "./../system/index.js";
 import { CAMERA, RENDERER, SCENE } from "./globals.three.js";
@@ -54,6 +59,7 @@ export const ParticleSystemAnimation = function (
 		size: config.material.sizeParticle || 0.01,
 		sizeAttenuation: true,
 	});
+	material.blending = AdditiveBlending;
 
 	config.system.setGeometry(geometry);
 
