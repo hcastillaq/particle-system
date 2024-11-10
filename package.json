@@ -1,53 +1,53 @@
 {
-	"name": "particle-system",
-	"private": false,
-	"version": "0.0.14",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/hcastillaq/particle-system-threejs"
-	},
-	"main": "package/index.js",
-	"types": "package/index.d.ts",
-	"type": "module",
-	"files": [
-		"package/**/*"
-	],
-	"scripts": {
-		"dev": "vite",
-		"build": "./node_modules/typescript/bin/tsc && vite build",
-		"preview": "vite preview",
-		"tsc": "./node_modules/typescript/bin/tsc",
-		"tsc-watch": "tsc-watch",
-		"minify": "node minify.js"
-	},
-	"devDependencies": {
-		"@types/node": "^18.13.0",
-		"@types/three": "^0.149.0",
-		"gulp": "^3.9.1",
-		"gulp-minify": "^3.0.0",
-		"tsc": "^2.0.4",
-		"tsc-watch": "^6.0.0",
-		"vite": "^4.1.0",
-		"typescript": "^5.0.2"
-	},
-	"dependencies": {
-		"three": "^0.150.1"
-	},
-	"author": {
-		"name": "Hernan Castilla",
-		"email": "hcastillaq@gmail.com",
-		"url": "https://hcastillaq.com"
-	},
-	"description": "Particle system with three.js",
-	"keywords": [
-		"three.js",
-		"particle system",
-		"particles",
-		"webgl",
-		"generative art",
-		"art",
-		"javascript",
-		"three"
-	],
-	"license": "MIT"
+  "name": "particle-system",
+  "private": false,
+  "version": "2.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hcastillaq/particle-system"
+  },
+  "main": "package/index.js",
+  "types": "package/index.d.ts",
+  "type": "module",
+  "files": [
+    "package/**/*"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "./node_modules/typescript/bin/tsc && vite build",
+    "preview": "vite preview",
+    "tsc": "./node_modules/typescript/bin/tsc",
+    "tsc-watch": "tsc-watch",
+    "minify": "node minify.js"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/three": "^0.169.0",
+    "gulp": "^3.9.1",
+    "gulp-minify": "^3.0.0",
+    "tsc": "^2.0.4",
+    "tsc-watch": "^6.0.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.1.0"
+  },
+  "author": {
+    "name": "Hernan Castilla",
+    "email": "hcastillaq@gmail.com",
+    "url": "https://hcastillaq.com"
+  },
+  "description": "Particle system with three.js",
+  "keywords": [
+    "three.js",
+    "particle system",
+    "particles",
+    "webgl",
+    "generative art",
+    "art",
+    "javascript",
+    "three"
+  ],
+  "license": "MIT"
 }

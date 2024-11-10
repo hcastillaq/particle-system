@@ -1,19 +1,21 @@
-import { BufferGeometry, Float32BufferAttribute, Scene } from "three";
-export class ParticleSystem {
+import { BufferGeometry, Float32BufferAttribute } from 'three';
+export class GArtSystem {
     particles = [];
     numberParticles = 0;
     speed = 1;
     geometry = new BufferGeometry();
-    scene = new Scene();
     setParticlesNumber(number) {
         this.numberParticles = number;
     }
     getParticlesNumber() {
         return this.particles.length;
     }
+    getParticles() {
+        return this.particles;
+    }
     setGeometry(geometry) {
         this.geometry = geometry;
-        this.makeVertices();
+        this.makeParticles();
     }
     setSpeed(speed) {
         this.speed = speed;
@@ -21,30 +23,27 @@ export class ParticleSystem {
     changeSpeed(speed) {
         this.speed = speed;
     }
-    makeVertices() {
+    makeParticles() {
         const vertices = [];
         for (let i = 0; i < this.numberParticles; i++) {
             const particle = this.make();
             this.particles.push(particle);
             vertices.push(particle.x, particle.y, particle.z);
         }
-        this.updateGeometricParticles(vertices);
+        this.setParticlesInGeometry(vertices);
     }
-    updateGeometricParticles(vertices) {
-        this.geometry.setAttribute("position", new Float32BufferAttribute(vertices, 3));
+    setParticlesInGeometry(vertices) {
+        this.geometry.setAttribute('position', new Float32BufferAttribute(vertices, 3));
     }
     random(min, max) {
         return Math.random() * (max - min) + min;
     }
     dispose() {
         this.geometry.dispose();
-        this.geometry.deleteAttribute("position");
+        this.geometry.deleteAttribute('position');
         this.particles = [];
         this.numberParticles = 0;
         this.speed = 1;
-    }
-    setScene(scene) {
-        this.scene = scene;
     }
     apply(index, x, y, z) {
         const position = this.geometry.attributes.position;
@@ -56,7 +55,7 @@ export class ParticleSystem {
             const particle = this.particles[i];
             vertices.push(particle.x, particle.y, particle.z);
         }
-        this.updateGeometricParticles(vertices);
+        this.setParticlesInGeometry(vertices);
     }
     validatePositiveNumber(value) {
         return value >= 0 ? true : false;

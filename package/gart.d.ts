@@ -1,0 +1,33 @@
+import { GArtCallbacks, GArtConfig } from './interfaces';
+export declare class GArt {
+    readonly config: GArtConfig;
+    private scene;
+    private camera;
+    private renderer;
+    private geometry;
+    private material;
+    private points;
+    private orbitControl;
+    private stats;
+    private idAnimation;
+    private defaultOrbitControlConfig;
+    constructor(config: GArtConfig);
+    private getWindowSize;
+    private configureCamera;
+    private configureRenderer;
+    private configureMaterial;
+    private configurePoints;
+    private setStatsToContainer;
+    private configureOrbitControl;
+    private windowResize;
+    private addWindowResizeListener;
+    private rotate;
+    private changeColor;
+    private changeOpacity;
+    private takePhoto;
+    private stop;
+    private animate;
+    load: () => GArtCallbacks;
+    static convertColorStringToNumber: (color: string) => number;
+    static convertColorNumberToString: (color: number) => string;
+}
