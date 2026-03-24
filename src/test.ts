@@ -1,23 +1,22 @@
-import { LorenzAttractor } from './attractors/lorenz.attractor';
-import { GArt, GArtConfig } from './lib';
+import LorenzAttractor from "./attractors/lorenz.attractor";
+import { createGArtCPU, GArtCPUConfig } from "./lib";
 
 const system = new LorenzAttractor();
 
-const config: GArtConfig = {
-  system,
-  container: document.getElementById('app') as HTMLElement,
-  zoom: 100,
-  material: {
-    color: 'cyan',
-    sizeParticle: 0.01,
-    opacity: 0.1,
-  },
-  orbitConfig: {
-    autoRotate: true,
-  },
-  stats: true,
+const config: GArtCPUConfig = {
+	system,
+	container: document.getElementById("app") as HTMLElement,
+	zoom: 200,
+	material: {
+		color: "#00FFFF",
+		sizeParticle: 0.01,
+		opacity: 0.01,
+	},
+	orbitConfig: {
+		autoRotate: true,
+	},
+	stats: true,
 };
 
-const gArt = new GArt(config);
-const callbacks = gArt.load();
-callbacks.start();
+const gArt = createGArtCPU(config);
+gArt.start();

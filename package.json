@@ -14,24 +14,26 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "./node_modules/typescript/bin/tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
-    "tsc": "./node_modules/typescript/bin/tsc",
-    "tsc-watch": "tsc-watch",
-    "minify": "node minify.js"
+    "lib:minify": "node scripts/minify.js",
+    "lib:build": "./node_modules/typescript/bin/tsc --project tsconfig.lib.json && npm run lib:minify",
+    "format": "prettier --write \"src/**/*.{ts,js,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,js,json}\""
   },
-  "dependencies": {
-    "three": "^0.170.0"
+  "peerDependencies": {
+    "three": "^0.183.2"
   },
   "devDependencies": {
-    "@types/node": "^22.9.0",
-    "@types/three": "^0.169.0",
-    "gulp": "^3.9.1",
-    "gulp-minify": "^3.0.0",
-    "tsc": "^2.0.4",
-    "tsc-watch": "^6.0.0",
-    "typescript": "^5.0.2",
-    "vite": "^4.1.0"
+    "@types/node": "^25.5.0",
+    "@types/three": "^0.183.1",
+    "gulp": "^5.0.1",
+    "gulp-terser": "^2.1.0",
+    "prettier": "^3.8.1",
+    "three": "^0.183.2",
+    "tsc-watch": "^7.2.0",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.2"
   },
   "author": {
     "name": "Hernan Castilla",
