@@ -1,21 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Particle System</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Particle System</title>
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-    </style>
-  </head>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
 
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/test.ts"></script>
-  </body>
+			#app {
+				width: 100vw;
+				height: 100vh;
+			}
+
+			#options {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				color: white;
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+			}
+			#options > div {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app"></div>
+		<div id="options">
+			<div>
+				<span>Auto Rotate</span>
+				<input id="autoRotate" type="checkbox" />
+			</div>
+			<div>
+				<span>Color</span>
+				<input id="color" type="color" />
+			</div>
+			<div>
+				<span>Opacity</span>
+				<input
+					id="opacity"
+					type="range"
+					min="0"
+					max="1"
+					step="0.01"
+					value="0.5"
+				/>
+			</div>
+			<div>
+				<span>Speed</span>
+				<input id="speed" type="range" min="0" max="2" step="0.01" value="1" />
+			</div>
+			<button id="takePhoto">take photo</button>
+		</div>
+		<script type="module" src="/src/test.ts"></script>
+	</body>
 </html>

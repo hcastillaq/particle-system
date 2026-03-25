@@ -1,8 +1,8 @@
 import { ColorHex } from "./../interfaces";
 
 function convertColorStringToNumber(color: ColorHex): number {
-	if (color.length === 7 && color.includes("#")) {
-		return parseInt(`0x${color.split("#")[1]}`);
+	if (color.length === 7 && color.charCodeAt(0) === 35) {
+		return parseInt(color.slice(1), 16);
 	}
 	return 0xffffff;
 }

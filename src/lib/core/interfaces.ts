@@ -1,20 +1,14 @@
 import { GArtSystemCPU } from "./cpu/GArtSystemCPU";
 import { GArtSystemGPU } from "./gpu";
 
-interface GArtConfigBase {
+export interface GArtConfig {
+	system: GArtSystemGPU | GArtSystemCPU;
 	container: HTMLElement;
 	material: GArtMaterialConfig;
 	zoom?: number;
 	stats?: boolean;
 	orbitConfig?: GArtOrbitControlConfig;
-}
-
-export interface GArtGPUConfig extends GArtConfigBase {
-	system: GArtSystemGPU;
-}
-
-export interface GArtCPUConfig extends GArtConfigBase {
-	system: GArtSystemCPU<GArtParticle>;
+	speed?: number;
 }
 
 /** Hex color string, e.g. "#00ffff" or "#ffffff" */
@@ -30,9 +24,11 @@ export interface GArtCallbacks {
 	start: () => void;
 	stop: () => void;
 	dispose: () => void;
-	changeColor: (color: ColorHex) => void;
-	changeOpacity: (opacity: number) => void;
 	takePhoto: (fileName?: string) => void;
+	setColor: (color: ColorHex) => void;
+	setOpacity: (opacity: number) => void;
+	setAutoRotate: (autoRotate: boolean) => void;
+	setSpeed: (speed: number) => void;
 }
 
 export interface GArtOrbitControlConfig {
@@ -43,9 +39,7 @@ export interface GArtOrbitControlConfig {
 	autoRotateSpeed?: number;
 }
 
-export interface GArtParticle {
-	x: number;
-	y: number;
-	z: number;
-	[key: string]: unknown;
+export interface GArtGPUVariable {
+	name: string;
+	shader: string;
 }

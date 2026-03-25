@@ -1,9 +1,9 @@
 import { GArtSystemGPU } from "../lib";
 
 export class LorenzAttractorGPU extends GArtSystemGPU {
-	protected numberParticles = 10_000_000;
+	texturePosition = /* glsl */ `
+		uniform float uSpeed;
 
-	protected positionShader = /* glsl */ `
 		void main() {
 			vec2 uv = gl_FragCoord.xy / resolution.xy;
 			vec4 pos = texture2D(texturePosition, uv);
@@ -11,7 +11,7 @@ export class LorenzAttractorGPU extends GArtSystemGPU {
 			float a  = 10.0;
 			float b  = 39.99;
 			float c  = 2.6667;
-			float dt = pos.w;
+			float dt = pos.w * uSpeed;
 
 			float dx = a * (pos.y - pos.x) * dt;
 			float dy = (pos.x * (b - pos.z) - pos.y) * dt;
@@ -22,12 +22,13 @@ export class LorenzAttractorGPU extends GArtSystemGPU {
 	`;
 
 	protected getInitialData(): Float32Array {
-		const data = new Float32Array(this.numberParticles * 4);
-		for (let i = 0; i < this.numberParticles; i++) {
+		const particleCount = this.getParticleCount();
+		const data = new Float32Array(particleCount * 4);
+		for (let i = 0; i < particleCount; i++) {
 			data[i * 4] = 1;
 			data[i * 4 + 1] = 1;
 			data[i * 4 + 2] = 1;
-			data[i * 4 + 3] = Math.random() * 0.005 + 0.001; // dt ∈ [0.001, 0.005]
+			data[i * 4 + 3] = Math.random() * 0.005 + 0.001;
 		}
 		return data;
 	}

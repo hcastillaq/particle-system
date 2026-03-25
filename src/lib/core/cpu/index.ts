@@ -1,2 +1,2 @@
-export * from "./creatGArtCPU";
+export * from "./createGArtCPU";
 export * from "./GArtSystemCPU";
