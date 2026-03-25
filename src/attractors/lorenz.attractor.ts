@@ -1,47 +1,35 @@
-import { GArtSystem } from '../lib/gart.system';
-import { GArtParticle } from '../lib/interfaces';
+import { GArtSystemCPU } from "../lib";
 
-interface LorenzParticle extends GArtParticle {
-  a: number;
-  b: number;
-  c: number;
-  dt: number;
-}
-export class LorenzAttractor extends GArtSystem<LorenzParticle> {
-  numberParticles = 4000000;
-  speed = 1;
+export class LorenzAttractor extends GArtSystemCPU {
+	private A = 10.0;
+	private B = 39.99;
+	private C = 8 / 3;
 
-  make() {
-    return {
-      x: 1,
-      y: 1,
-      z: 1,
-      a: 10,
-      b: 39.99,
-      c: 8 / 3,
-      dt: this.random(0.001, 0.005),
-    };
-  }
+	public createParticle(): number[] {
+		return [1, 1, 1, this.random(0.001, 0.005)];
+	}
 
-  update() {
-    for (let i = 0; i < this.numberParticles; i++) {
-      const particle = this.particles[i];
+	update(dt: number) {
+		const particles = this.getParticles();
+		const particleCount = this.getParticleCount();
+		const attributes = 4;
 
-      const dx = particle.a * (particle.y - particle.x) * particle.dt;
+		for (let i = 0; i < particleCount; i++) {
+			const offset = i * attributes;
+			const x = particles[offset];
+			const y = particles[offset + 1];
+			const z = particles[offset + 2];
+			const step = particles[offset + 3] * dt;
 
-      const dy =
-        (particle.x * (particle.b - particle.z) - particle.y) * particle.dt;
+			const dx = this.A * (y - x);
+			const dy = x * (this.B - z) - y;
+			const dz = x * y - this.C * z;
 
-      const dz =
-        (particle.x * particle.y - particle.c * particle.z) * particle.dt;
-
-      particle.x += dx * this.speed;
-      particle.y += dy * this.speed;
-      particle.z += dz * this.speed;
-
-      this.apply(i, particle.x, particle.y, particle.z);
-    }
-  }
+			particles[offset] = x + dx * step;
+			particles[offset + 1] = y + dy * step;
+			particles[offset + 2] = z + dz * step;
+		}
+	}
 }
 
 export default LorenzAttractor;
