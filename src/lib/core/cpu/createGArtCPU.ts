@@ -10,23 +10,15 @@ import {
 	Vector3,
 } from "three";
 import Stats from "three/addons/libs/stats.module.js";
-import { buildOrbitControl, buildRenderer, takePhoto } from "../builders";
+import { buildOrbitControl, buildRenderer } from "../builders";
+import { ColorHex, GArtCallbacks, GArtConfig } from "../interfaces";
 import {
-	ColorHex,
-	GArtCallbacks,
-	GArtConfig,
-	GArtOrbitControlConfig,
-} from "../interfaces";
-import { colorUtils } from "../utils";
+	colorUtils,
+	DEFAULT_ORBIT_CONFIG,
+	orbitRotate,
+	takePhoto,
+} from "../utils";
 import { GArtSystemCPU } from "./GArtSystemCPU";
-
-const DEFAULT_ORBIT_CONFIG: GArtOrbitControlConfig = {
-	enableDamping: true,
-	dampingFactor: 0.25,
-	enableZoom: true,
-	autoRotate: true,
-	autoRotateSpeed: 0.5,
-};
 
 function buildParticleTexture(): CanvasTexture {
 	const size = 64;
@@ -75,6 +67,7 @@ export function createGArtCPU(config: GArtConfig): GArtCallbacks {
 	const material = buildMaterial(config);
 
 	const points = new Points(geometry, material);
+	points.frustumCulled = false;
 	scene.add(points);
 
 	const orbitControl = buildOrbitControl(
@@ -116,14 +109,6 @@ export function createGArtCPU(config: GArtConfig): GArtCallbacks {
 		userInteracting = false;
 	});
 
-	function rotate() {
-		if (orbitConfig.autoRotate && !userInteracting) {
-			const rotSpeed = (orbitConfig.autoRotateSpeed ?? 0.5) * Math.PI * 0.001;
-			scene.rotateX(-rotSpeed);
-			scene.rotateY(rotSpeed);
-		}
-	}
-
 	function update() {
 		system.update(speed);
 		positionAttr.needsUpdate = true;
@@ -132,7 +117,7 @@ export function createGArtCPU(config: GArtConfig): GArtCallbacks {
 	function animate() {
 		idAnimation = requestAnimationFrame(animate);
 		update();
-		rotate();
+		orbitRotate(orbitConfig, userInteracting, scene);
 		orbitControl.update();
 		renderer.render(scene, camera);
 		if (config.stats) stats.update();
