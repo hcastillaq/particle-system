@@ -10,22 +10,10 @@ import {
 } from "three";
 import Stats from "three/addons/libs/stats.module.js";
 import { GPUComputationRenderer } from "three/addons/misc/GPUComputationRenderer.js";
-import { buildOrbitControl, buildRenderer, takePhoto as capturePhoto } from "../builders";
-import {
-	ColorHex,
-	GArtCallbacks,
-	GArtConfig,
-	GArtOrbitControlConfig,
-} from "../interfaces";
+import { buildOrbitControl, buildRenderer } from "../builders";
+import { ColorHex, GArtCallbacks, GArtConfig } from "../interfaces";
+import { DEFAULT_ORBIT_CONFIG, orbitRotate, takePhoto } from "../utils";
 import { GArtSystemGPU } from "./GArtSystemGPU";
-
-const DEFAULT_ORBIT_CONFIG: GArtOrbitControlConfig = {
-	enableDamping: true,
-	dampingFactor: 0.25,
-	enableZoom: true,
-	autoRotate: true,
-	autoRotateSpeed: 0.5,
-};
 
 const FRAGMENT_SHADER = /* glsl */ `
 	uniform vec3 uColor;
@@ -133,7 +121,9 @@ export function createGArtGPU(config: GArtConfig): GArtCallbacks {
 		renderer.domElement,
 		orbitConfig
 	);
-	scene.add(new Points(geometry, material));
+	const points = new Points(geometry, material);
+	points.frustumCulled = false;
+	scene.add(points);
 
 	let idAnimation = 0;
 	let running = false;
@@ -165,18 +155,10 @@ export function createGArtGPU(config: GArtConfig): GArtCallbacks {
 			gpuCompute.getCurrentRenderTarget(varRef).texture;
 	}
 
-	function rotate() {
-		if (orbitConfig.autoRotate && !userInteracting) {
-			const rotSpeed = (orbitConfig.autoRotateSpeed ?? 0.5) * Math.PI * 0.001;
-			scene.rotateX(-rotSpeed);
-			scene.rotateY(rotSpeed);
-		}
-	}
-
 	function animate() {
 		idAnimation = requestAnimationFrame(animate);
 		update();
-		rotate();
+		orbitRotate(orbitConfig, userInteracting, scene);
 		orbitControl.update();
 		if (config.stats) stats.update();
 		renderer.render(scene, camera);
@@ -228,7 +210,7 @@ export function createGArtGPU(config: GArtConfig): GArtCallbacks {
 			orbitControl.autoRotate = autoRotate;
 		},
 		takePhoto(fileName?: string) {
-			capturePhoto(renderer, camera, scene, fileName);
+			takePhoto(renderer, camera, scene, fileName);
 		},
 	};
 }
