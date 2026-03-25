@@ -1,7 +1,7 @@
 import { GArtSystem } from "../GArtSystem";
 
 export abstract class GArtSystemCPU extends GArtSystem {
-	private particles: Float32Array;
+	private particles: Float32Array = new Float32Array();
 
 	constructor(particleCount: number) {
 		super(particleCount);
