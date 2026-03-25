@@ -6,6 +6,8 @@ import {
 	Points,
 	Scene,
 	ShaderMaterial,
+	Sphere,
+	Vector3,
 	WebGLRenderer,
 } from "three";
 import Stats from "three/addons/libs/stats.module.js";
@@ -91,6 +93,7 @@ function buildGeometry(
 	const geometry = new BufferGeometry();
 	geometry.setAttribute("position", new Float32BufferAttribute(uvs, 2));
 	geometry.setDrawRange(0, numParticles);
+	geometry.boundingSphere = new Sphere(new Vector3(0, 0, 0), Infinity);
 	return geometry;
 }
 

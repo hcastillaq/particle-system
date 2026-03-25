@@ -6,6 +6,8 @@ import {
 	Points,
 	PointsMaterial,
 	Scene,
+	Sphere,
+	Vector3,
 } from "three";
 import Stats from "three/addons/libs/stats.module.js";
 import { buildOrbitControl, buildRenderer, takePhoto } from "../builders";
@@ -67,6 +69,7 @@ export function createGArtCPU(config: GArtConfig): GArtCallbacks {
 	);
 
 	const geometry = new BufferGeometry();
+	geometry.boundingSphere = new Sphere(new Vector3(0, 0, 0), Infinity);
 	const stats = new Stats();
 	const scene = new Scene();
 	const material = buildMaterial(config);
